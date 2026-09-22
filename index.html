@@ -4,13 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title>LFSR Simulator</title>
     <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=jacinto.design">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello Bong!</h1>
+    <div class="app">
+        <h1><i class="fa-solid fa-microchip"></i> LFSR Simulator</h1>
+        <p class="subtitle">A simple Fibonacci Linear Feedback Shift Register</p>
+
+        <div class="panel">
+            <div class="controls-row">
+                <label>
+                    Register length
+                    <select id="length-select">
+                        <option value="4">4 bits</option>
+                        <option value="8" selected>8 bits</option>
+                        <option value="16">16 bits</option>
+                        <option value="32">32 bits</option>
+                    </select>
+                </label>
+
+                <label>
+                    Seed (binary)
+                    <input type="text" id="seed-input" spellcheck="false">
+                </label>
+            </div>
+
+            <div class="taps-row">
+                <span class="taps-label">Tap positions (feedback polynomial)</span>
+                <div id="taps-container" class="taps-container"></div>
+            </div>
+
+            <div class="buttons-row">
+                <button id="step-btn"><i class="fa-solid fa-forward-step"></i> Step</button>
+                <button id="run-btn"><i class="fa-solid fa-play"></i> Run</button>
+                <button id="reset-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                <label class="speed-label">
+                    Speed
+                    <input type="range" id="speed-range" min="30" max="1000" value="250">
+                </label>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Register</h2>
+            <div id="register-view" class="register-view"></div>
+
+            <div class="stats-row">
+                <div><span class="stat-label">Step</span><span id="step-count">0</span></div>
+                <div><span class="stat-label">Output bit</span><span id="output-bit">-</span></div>
+                <div><span class="stat-label">Feedback bit</span><span id="feedback-bit">-</span></div>
+            </div>
+
+            <h2>Output stream</h2>
+            <div id="output-stream" class="output-stream"></div>
+        </div>
+    </div>
+
     <!-- Script -->
     <script src="script.js"></script>
 </body>
